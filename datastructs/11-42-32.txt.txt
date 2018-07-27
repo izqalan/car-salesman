@@ -1,2 +1,0 @@
-ID: 0 Manufacture: asd Model: qwe Year released: 1234
-ID: 1 Manufacture: asg Model: qws Year released: 432

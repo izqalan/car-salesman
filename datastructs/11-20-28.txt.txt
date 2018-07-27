@@ -1,2 +1,0 @@
-ID: 0 Manufacture: as Model: 12 Year released: xc
-ID: 1 Manufacture: sd Model: as Year released: 123

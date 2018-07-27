@@ -1,2 +1,0 @@
-ID: 0Manufacture: as Model: fd Year released: gd
-ID: 1Manufacture: 123 Model: 543 Year released: 6754

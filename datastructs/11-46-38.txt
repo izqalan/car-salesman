@@ -1,2 +1,0 @@
-ID: 0 Manufacture: as Model: fd Year released: qw
-ID: 1 Manufacture: df Model: sa Year released: 12

@@ -1,2 +1,0 @@
-ID: 0Manufacture: a Model: s Year released: d
-ID: 1Manufacture: 1 Model: 23 Year released: 42
