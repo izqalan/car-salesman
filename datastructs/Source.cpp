@@ -15,8 +15,7 @@ int main(){
 
 	display(&q);
 
-
-	del(2, &k, &q, &temp);
+	del(0, &k, &q, &temp); // notepad popup
 
 	display(&q);
 	

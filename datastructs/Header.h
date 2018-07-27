@@ -1,9 +1,14 @@
 #include <iostream>
 #include <istream>
+#include <fstream>
+#include <time.h>
+#include <sstream>
+#include <string>
 
 using namespace std;
 
 #define max 10
+string filename;
 
 struct car{
 	// value
@@ -36,14 +41,64 @@ car get(struct car *c){
 	return *c;
 }
 
+string mkfile(){
+	// current time filename
+	char filename[50];
+	time_t getTime;
+	struct tm now;
+	time(&getTime);
+	localtime_s(&now, &getTime);
+	char strTime[50];
+
+	strftime(strTime, 50, "%H-%M-%S.txt", &now);
+	strcpy_s(filename, strTime);
+	return filename;
+
+}
+
+void sav(struct queue *q){
+	
+	//stringstream ss;
+
+	string filename = mkfile();
+
+	ofstream record;
+	record.open(filename);
+
+	for (int i = q->front; i <= q->rear; i++){
+		// need null checking
+		record << "ID: " << q->data[i].id;
+		record << " Manufacture: " << q->data[i].brand;
+		record << " Model: " << q->data[i].model;
+		record << " Year released: " << q->data[i].year << endl;
+	}
+	record.close();
+	 
+	//ss << "notepad.exe " << filename;
+	//char notepad[50];
+	//string s = ss.str();
+	//strcpy_s(notepad,filename.c_str());/
+
+	cout << "file saved: " <<filename.c_str() << endl;
+
+}
+
+void popup(){
+// apperently 'notepad.exe' is not required in system param
+	system(filename.c_str());
+}
+
+
 void display(struct queue *q){
+
 	for (int i = q->front; i <= q->rear; i++){
 		// need null checking
 		cout << "ID: " << q->data[i].id;
-		cout << "Manufacture: " << q->data[i].brand;
+		cout << " Manufacture: " << q->data[i].brand;
 		cout << " Model: " << q->data[i].model;
 		cout << " Year released: " << q->data[i].year << endl;
 	}
+	
 }
 
 void add(car *c, queue *q){
@@ -57,11 +112,11 @@ void add(car *c, queue *q){
 }
 
 // prob
-qq del(int id, car *c, queue *q, queue *temp){
-	cout << "deleting " << endl;
+void del(int id, car *c, queue *q, queue *temp){
+	cout << "deleting :" << id << endl;
 	c->id = id;
 	for (int i = 0; i <= q->rear; i++){
-		cout << i << endl;
+		cout << "i " << i << endl;
 		if (c->id != q->data[i].id)
 		{
 			cout << "adding data into temp" << endl;
@@ -72,7 +127,7 @@ qq del(int id, car *c, queue *q, queue *temp){
 		}
 	}
 	*q = *temp;
-	return *q;
+	sav(q);
 }
 
 
